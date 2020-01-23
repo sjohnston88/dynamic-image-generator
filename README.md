@@ -1,28 +1,30 @@
-TODO: Finish inline todos
+# Dynamic image Generator
 
-Setup CI/CD
+Express and canvas server that creates dynamic images from query strings. Great for dynamic content and personalised images for websites or email newsletters.
 
-Tests
+## Getting Started
 
-Lambda handler
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-cloudformation config
-
-ß
-
-Usage:
-
-Make a re
+### Installing
 
 ```
-imageSrc // Path to an image stored in the app
-width = 600,
-height = 400,
-text = "example",
-fontSize = "40px",
-fontFamily = "sans-serif",
-fontWeight = "normal",
-fontColor = "#000000",
-xPos = 0,
-yPos = 0
+git clone https://github.com/sjohnston88/dynamic-image-generator.git
+npm install
+npm start
 ```
+
+Server runs by default at http://localhost:8080
+
+### Usage
+
+### Tests
+
+### Deployment
+
+### TODO
+
+- Lambda handler
+- Cloudformation Setup
+- CI/CD
+- Tests
