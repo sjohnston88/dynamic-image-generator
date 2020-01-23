@@ -1,42 +1,45 @@
-const { createCanvas, registerFont, loadImage } = require("canvas");
+const Canvas = require("canvas");
 
-// register custom fonts
-
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const {
-    // fix images
-    imageSrc = "",
+    imageSrc = "example.jpg",
     width = 600,
     height = 400,
-    text = "",
-    fontSize = "40px",
+    text = "example",
+    fontSize = "60px",
     fontFamily = "sans-serif",
-    // fix weights
     fontWeight = "normal",
-    // fix colours
     fontColor = "#000000",
     xPos = 0,
     yPos = 0
   } = req.query;
 
-  const canvas = createCanvas(width, height);
+  const fontPath = `${process.cwd()}/src/fonts/IndieFlower-Regular.ttf`;
+  Canvas.registerFont(fontPath, { family: "Indie Flower" });
+
+  const backgroundPath = `${process.cwd()}/src/images/${imageSrc}`;
+  const canvas = Canvas.createCanvas(width, height);
   const ctx = canvas.getContext("2d");
 
-  ctx.font = `${fontSize} ${fontFamily}`;
-  ctx.textBaseline = "top";
-  ctx.textAlign = "start";
-  ctx.fillStyle = fontColor;
-  ctx.fillText(text, xPos, yPos);
+  // Configure background
+  const background = await Canvas.loadImage(backgroundPath);
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-  // TODO: load images into canvas
+  // Configure text
+  const hexCodeRegex = /^[0-9A-F]{6}$/i;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = `${fontWeight} ${fontSize} ${fontFamily}`;
+  ctx.fillStyle = hexCodeRegex.test(fontColor) ? `#${fontColor}` : fontColor;
 
-  console.log("Image Created");
-  // TODO: resolve as buffer to img with headers
-  res.send('<img src="' + canvas.toDataURL() + '" />');
-  //   res.send(
-  //     canvas.toBuffer("image/png", {
-  //       compressionLevel: 3,
-  //       filters: canvas.PNG_FILTER_NONE
-  //     })
-  //   );
+  const offset = parseInt(fontSize.replace("px", "") / 2);
+  ctx.fillText(text, xPos, yPos - offset);
+
+  const finalImage = canvas.toBuffer("image/png", {
+    compressionLevel: 3,
+    filters: canvas.PNG_FILTER_NONE
+  });
+
+  res.contentType("image/png");
+  res.send(finalImage);
 };
