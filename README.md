@@ -11,21 +11,14 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 git clone https://github.com/sjohnston88/dynamic-image-generator.git
 npm install
-npm start
+npm run dev
 ```
 
 Server runs by default at http://localhost:8080
 
-imageSrc = "example.jpg",
-width = 600,
-height = 400,
-text = "example",
-fontSize = "60px",
-fontFamily = "sans-serif",
-fontWeight = "normal",
-fontColor = "#000000",
-xPos = 0,
-yPos = 0
+### Usage
+
+You can use the following parameters in the query string to generate dynamic images this will overwrite any predefined values stored.
 
 | Param        | Default Value   | Description |
 | ------------ | --------------- | ----------- |
@@ -39,8 +32,13 @@ yPos = 0
 | `fontSize`   | `"60px"`        |             |
 | `xPos`       | `0`             |             |
 | `yPos`       | `0`             |             |
+| `multiText`  | `[]`            |             |
 
-### Usage
+#### MultiText Content
+
+?multiText[0][text]=hello&multiText[0][xpos]=300&multiText[0][ypos]=300
+
+#### Predefined Images
 
 ### Tests
 
