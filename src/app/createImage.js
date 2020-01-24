@@ -1,11 +1,10 @@
 import Canvas from 'canvas';
 
-const createImage = async ({ req: query }, res, config = {}) => {
-  const settings = Object.assign(config, query);
-  console.log('the settings: ', settings);
+const createImage = async (req, res, config = {}) => {
+  const settings = Object.assign({}, config, req.query);
 
   const {
-    imageSrc = 'example.jpg',
+    imageSrc = 'default.jpg',
     width = 600,
     height = 400,
     text = 'example',
@@ -13,8 +12,8 @@ const createImage = async ({ req: query }, res, config = {}) => {
     fontFamily = 'sans-serif',
     fontWeight = 'normal',
     fontColor = '#ffffff',
-    xPos = 0,
-    yPos = 0
+    xPos = 300,
+    yPos = 215
   } = settings;
 
   const fontPath = `${process.cwd()}/src/fonts/IndieFlower-Regular.ttf`;

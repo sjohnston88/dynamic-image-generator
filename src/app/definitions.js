@@ -1,15 +1,11 @@
-const exampleOne = {
-  path: 'example',
+const personalisedTeeShirt = {
+  path: 'personalisedTeeShirt',
   config: {
-    text: 'example text'
+    imageSrc: 'tshirt.jpg',
+    fontSize: '25px',
+    text: '¯\\_(ツ)_/¯',
+    yPos: 160
   }
 };
 
-const sampleOne = {
-  path: 'sample',
-  config: {
-    text: 'sample text'
-  }
-};
-
-export default [exampleOne, sampleOne];
+export default [personalisedTeeShirt];
