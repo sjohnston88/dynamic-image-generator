@@ -16,13 +16,37 @@ npm start
 
 Server runs by default at http://localhost:8080
 
+imageSrc = "example.jpg",
+width = 600,
+height = 400,
+text = "example",
+fontSize = "60px",
+fontFamily = "sans-serif",
+fontWeight = "normal",
+fontColor = "#000000",
+xPos = 0,
+yPos = 0
+
+| Param        | Default Value   | Description |
+| ------------ | --------------- | ----------- |
+| `imageSrc`   | `600`           |             |
+| `width`      | `400`           |             |
+| `height`     | `"exmaple.jpg"` |             |
+| `text`       | `""`            |             |
+| `fontFamily` | `"sans-serfif"` |             |
+| `fontWeight` | `"normal"`      |             |
+| `fontColor`  | `"#000000"`     |             |
+| `fontSize`   | `"60px"`        |             |
+| `xPos`       | `0`             |             |
+| `yPos`       | `0`             |             |
+
 ### Usage
 
 ### Tests
 
-### Deployment
+## Deployment
 
-### TODO
+## TODO
 
 - Lambda handler
 - Cloudformation Setup
