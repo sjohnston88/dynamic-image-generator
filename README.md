@@ -1,4 +1,4 @@
-# Dynamic image Generator
+# Dynamic Image Generator
 
 Express and canvas server that creates dynamic images from query strings. Great for dynamic content and personalised images for websites or email newsletters.
 
