@@ -1,6 +1,6 @@
 import Canvas from 'canvas';
 
-const createImage = async ({ req: query }, res, config) => {
+const createImage = async ({ req: query }, res, config = {}) => {
   const settings = Object.assign(config, query);
   console.log('the settings: ', settings);
 
@@ -15,7 +15,7 @@ const createImage = async ({ req: query }, res, config) => {
     fontColor = '#ffffff',
     xPos = 0,
     yPos = 0
-  } = query;
+  } = settings;
 
   const fontPath = `${process.cwd()}/src/fonts/IndieFlower-Regular.ttf`;
   Canvas.registerFont(fontPath, { family: 'Indie Flower' });
