@@ -7,13 +7,14 @@ const createImage = async (req, res, config = {}) => {
     imageSrc = 'default.jpg',
     width = 600,
     height = 400,
-    text = 'example',
+    text = '',
     fontSize = '60px',
     fontFamily = 'sans-serif',
     fontWeight = 'normal',
     fontColor = '#ffffff',
-    xPos = 300,
-    yPos = 215
+    horizontalPosition = 300,
+    verticalPosition = 215,
+    multiText = []
   } = settings;
 
   const fontPath = `${process.cwd()}/src/fonts/IndieFlower-Regular.ttf`;
@@ -31,11 +32,25 @@ const createImage = async (req, res, config = {}) => {
   const hexCodeRegex = /^[0-9A-F]{6}$/i;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
+
   ctx.font = `${fontWeight} ${fontSize} ${fontFamily}`;
   ctx.fillStyle = hexCodeRegex.test(fontColor) ? `#${fontColor}` : fontColor;
-
   const offset = parseInt(fontSize.replace('px', '') / 2);
-  ctx.fillText(text, xPos, yPos - offset);
+  ctx.fillText(text, horizontalPosition, verticalPosition - offset);
+
+  // Render any multitext content
+  multiText.forEach(item => {
+    const textFamily = item.fontFamily || fontFamily;
+    const textWeight = item.fontWeight || fontWeight;
+    const textSize = item.fontSize || fontSize;
+    const textColor = item.fontColor || fontColor;
+
+    ctx.font = `${textWeight} ${textSize} ${textFamily}`;
+    ctx.fillStyle = hexCodeRegex.test(textColor) ? `#${textColor}` : textColor;
+
+    const offset = parseInt(textSize.replace('px', '') / 2);
+    ctx.fillText(item.text, item.xPos, item.yPos - offset);
+  });
 
   const finalImage = canvas.toBuffer('image/png', {
     compressionLevel: 3,
