@@ -1,5 +1,6 @@
 import express from 'express';
 import createImage from '../app/createImage';
+import definedRoutes from '../app/definitions';
 
 const { SERVER_PORT } = process.env;
 const port = parseInt(SERVER_PORT, 10) || 8080;
@@ -9,17 +10,10 @@ server.disable('x-powered-by');
 
 server.get('/', (req, res) => createImage(req, res));
 
-server.get('/defined.png', (req, res) => {
-  req.query = {
-    text: 'defined image',
-    fontColor: 'white',
-    fontWeight: 'bold',
-    fontFamily: 'Indie Flower',
-    xPos: '300',
-    yPos: '220'
-  };
-
-  return createImage(req, res);
+definedRoutes.forEach(({ path, config }) => {
+  server.get(`/${path}`, (req, res) => {
+    return createImage(req, res, config);
+  });
 });
 
 const startServer = () =>
