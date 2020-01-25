@@ -2,9 +2,12 @@ const personalisedTeeShirt = {
   path: 'personalisedTeeShirt',
   config: {
     imageSrc: 'tshirt.jpg',
-    fontSize: '25px',
+    width: 1200,
+    height: 700,
+    fontSize: '50px',
     text: '¯\\_(ツ)_/¯',
-    verticalPosition: 160
+    horizontalPosition: 600,
+    verticalPosition: 300
   }
 };
 
@@ -13,35 +16,37 @@ const dogeMeme = {
   config: {
     imageSrc: 'doge.jpg',
     fontFamily: 'comic-sans',
-    fontSize: '20px',
+    fontSize: '40px',
     fontWeight: 'normal',
+    width: 1200,
+    height: 700,
     multiText: [
       {
         text: 'wow',
         fontColor: '#ffffff',
-        fontSize: '60px',
-        xPos: 200,
-        yPos: 100
+        fontSize: '80px',
+        xPos: 400,
+        yPos: 200
       },
       {
         text: 'such meme',
         fontColor: 'red',
         fontWeight: 'bold',
-        xPos: 500,
-        yPos: 120
+        xPos: 1000,
+        yPos: 250
       },
       {
         text: 'many laugh',
         fontColor: 'lightskyblue',
         fontSize: '30px',
         xPos: 130,
-        yPos: 240
+        yPos: 440
       },
       {
         text: 'so doge',
         fontColor: 'purple',
-        xPos: 400,
-        yPos: 350
+        xPos: 700,
+        yPos: 540
       }
     ]
   }
