@@ -20,25 +20,50 @@ Server runs by default at http://localhost:8080
 
 You can use the following parameters in the query string to generate dynamic images this will overwrite any predefined values stored.
 
-| Param        | Default Value   | Description |
-| ------------ | --------------- | ----------- |
-| `imageSrc`   | `600`           |             |
-| `width`      | `400`           |             |
-| `height`     | `"exmaple.jpg"` |             |
-| `text`       | `""`            |             |
-| `fontFamily` | `"sans-serfif"` |             |
-| `fontWeight` | `"normal"`      |             |
-| `fontColor`  | `"#000000"`     |             |
-| `fontSize`   | `"60px"`        |             |
-| `xPos`       | `0`             |             |
-| `yPos`       | `0`             |             |
-| `multiText`  | `[]`            |             |
+| Param        | Default Value | Description                                                        |
+| ------------ | ------------- | ------------------------------------------------------------------ |
+| `imageSrc`   | `example.jpg` | The filename of a locally stored background image                  |
+| `width`      | `600`         | The desired width of the image                                     |
+| `height`     | `400`         | The desired height of the image                                    |
+| `text`       | `''`          | The text to print onto the image                                   |
+| `fontName`   | `sans-serif`  | The name of a system or imported font-face                         |
+| `fontWeight` | `normal`      | The desired weight of the text                                     |
+| `fontColor`  | `000000`      | The desired hex code for the text ignoring `#`                     |
+| `fontSize`   | `60px`        | The desired size of the text                                       |
+| `xPos`       | `0`           | The desired horizontal position of the text, relative to top left. |
+| `yPos`       | `0`           | The desired vertical position of the text, relative to top left.   |
 
 #### MultiText Content
 
-?multiText[0][text]=hello&multiText[0][xpos]=300&multiText[0][ypos]=300
+Additionally, you can pass the `multiText` parameter which will allow for the positioning of multiple text layers. The parameters above can be used to set the default values for the image, and individual text layers will automatically inherit them, if they are not internally set.
+
+For example the following multiText options:
+
+```
+[{
+  text: 'wow',
+  xPos: 400,
+  yPos: 200
+},
+{
+  text: 'such meme',
+  fontColor: 'red',
+  xPos: 1000,
+  yPos: 250
+}]
+```
+
+Could be passed as the following query:
+
+`http://localhost:8080?multiText[0][text]=wow&multiText[0][xpos]=400&multiText[0][ypos]=200&multiText[1][text]=such+meme&multiText[1][fontColor]=red&multiText[1][xPos]=1000&multiText[1][yPos]=250`
 
 #### Predefined Images
+
+Store predefined images in the definitions.js file, ensuring you export them in the array. They will automatically be turned into routes for you and can be overridden by appending query strings to the url.
+
+#### External Images
+
+Set `S3_BUCKET=https://s3bucket.com/imagename.jpg` as an environment variable to store images externally.
 
 ### Tests
 
