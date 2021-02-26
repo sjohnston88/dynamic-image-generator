@@ -1,5 +1,7 @@
 # Dynamic Image Generator
 
+![Personalised Image](https://github.com/sjohnston88/dynamic-image-generator/blob/master/src/images/example.png?raw=true)
+
 Express and canvas server that creates dynamic images from query strings. Great for dynamic content and personalised images for websites or email newsletters.
 
 ## Getting Started
@@ -10,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ```
 git clone https://github.com/sjohnston88/dynamic-image-generator.git
-npm install
+npm i
 npm run dev
 ```
 
@@ -22,16 +24,16 @@ You can use the following parameters in the query string to generate dynamic ima
 
 | Param        | Default Value | Description                                                        |
 | ------------ | ------------- | ------------------------------------------------------------------ |
-| `imagesrc`   | `example.jpg` | The filename of a locally stored background image                  |
+| `imageSrc`   | `example.jpg` | The filename of a locally stored background image                  |
 | `width`      | `600`         | The desired width of the image                                     |
 | `height`     | `400`         | The desired height of the image                                    |
 | `text`       | `''`          | The text to print onto the image                                   |
-| `fontname`   | `sans-serif`  | The name of a system or imported font-face                         |
-| `fontweight` | `normal`      | The desired weight of the text                                     |
-| `fontcolor`  | `000000`      | The desired hex code for the text ignoring `#`                     |
-| `fontsize`   | `60px`        | The desired size of the text                                       |
-| `xpos`       | `0`           | The desired horizontal position of the text, relative to top left. |
-| `ypos`       | `0`           | The desired vertical position of the text, relative to top left.   |
+| `fontName`   | `sans-serif`  | The name of a system or imported font-face                         |
+| `fontWeight` | `normal`      | The desired weight of the text                                     |
+| `fontColor`  | `000000`      | The desired hex code for the text ignoring `#`                     |
+| `fontSize`   | `60px`        | The desired size of the text                                       |
+| `xPos`       | `0`           | The desired horizontal position of the text, relative to top left. |
+| `yPos`       | `0`           | The desired vertical position of the text, relative to top left.   |
 
 #### MultiText Content
 
@@ -65,7 +67,7 @@ Store predefined images in the definitions.js file, ensuring you export them in 
 
 #### External Images
 
-Set `S3_BUCKET=https://s3bucket.com/imagename.jpg` as an environment variable to store images externally.
+Set `S3_BUCKET=https://s3bucket.com/imagename.jpg` as an environment variable to reference images that are hosted externally.
 
 ### Tests
 

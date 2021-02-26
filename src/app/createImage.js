@@ -1,4 +1,4 @@
-import Canvas from 'canvas-prebuilt';
+import Canvas from 'canvas';
 
 const createImage = async (req, res, config = {}) => {
   const settings = { ...config, ...req.query };

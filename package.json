@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "canvas-prebuilt": "^2.0.0-alpha.14",
+    "canvas": "^2.6.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
