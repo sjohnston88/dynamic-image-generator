@@ -1,5 +1,5 @@
 const personalisedTeeShirt = {
-  path: 'personalisedTeeShirt',
+  path: 'personalised-tee-shirt',
   config: {
     imageSrc: 'tshirt.jpg',
     width: 1200,
@@ -12,14 +12,14 @@ const personalisedTeeShirt = {
 };
 
 const dogeMeme = {
-  path: 'dogeMeme',
+  path: 'doge-meme',
   config: {
     imageSrc: 'doge.jpg',
-    fontFamily: 'comic-sans',
-    fontSize: '40px',
-    fontWeight: 'normal',
     width: 1200,
     height: 700,
+    fontSize: '40px',
+    fontFamily: 'comic-sans',
+    fontWeight: 'normal',
     multiText: [
       {
         text: 'wow',

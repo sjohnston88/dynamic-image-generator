@@ -22,16 +22,16 @@ You can use the following parameters in the query string to generate dynamic ima
 
 | Param        | Default Value | Description                                                        |
 | ------------ | ------------- | ------------------------------------------------------------------ |
-| `imageSrc`   | `example.jpg` | The filename of a locally stored background image                  |
+| `imagesrc`   | `example.jpg` | The filename of a locally stored background image                  |
 | `width`      | `600`         | The desired width of the image                                     |
 | `height`     | `400`         | The desired height of the image                                    |
 | `text`       | `''`          | The text to print onto the image                                   |
-| `fontName`   | `sans-serif`  | The name of a system or imported font-face                         |
-| `fontWeight` | `normal`      | The desired weight of the text                                     |
-| `fontColor`  | `000000`      | The desired hex code for the text ignoring `#`                     |
-| `fontSize`   | `60px`        | The desired size of the text                                       |
-| `xPos`       | `0`           | The desired horizontal position of the text, relative to top left. |
-| `yPos`       | `0`           | The desired vertical position of the text, relative to top left.   |
+| `fontname`   | `sans-serif`  | The name of a system or imported font-face                         |
+| `fontweight` | `normal`      | The desired weight of the text                                     |
+| `fontcolor`  | `000000`      | The desired hex code for the text ignoring `#`                     |
+| `fontsize`   | `60px`        | The desired size of the text                                       |
+| `xpos`       | `0`           | The desired horizontal position of the text, relative to top left. |
+| `ypos`       | `0`           | The desired vertical position of the text, relative to top left.   |
 
 #### MultiText Content
 
@@ -55,11 +55,13 @@ For example the following multiText options:
 
 Could be passed as the following query:
 
-`http://localhost:8080?multiText[0][text]=wow&multiText[0][xpos]=400&multiText[0][ypos]=200&multiText[1][text]=such+meme&multiText[1][fontColor]=red&multiText[1][xPos]=1000&multiText[1][yPos]=250`
+`http://localhost:8080/doge-meme?multiText[0][text]=wow&multiText[0][xpos]=400&multiText[0][ypos]=200&multiText[1][text]=such+meme&multitext[1][fontcolor]=red&multitext[1][xPos]=1000&multitext[1][ypos]=250`
 
 #### Predefined Images
 
-Store predefined images in the definitions.js file, ensuring you export them in the array. They will automatically be turned into routes for you and can be overridden by appending query strings to the url.
+Store predefined images in the definitions.js file, ensuring you export them in the array. They will automatically be turned into routes for you and can be overridden by appending query strings to the url. For example:
+
+`http://localhost:8080/personalised-tee-shirt?text=hello+world`
 
 #### External Images
 

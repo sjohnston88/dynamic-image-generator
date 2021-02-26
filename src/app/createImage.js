@@ -1,7 +1,7 @@
-import Canvas from 'canvas';
+import Canvas from 'canvas-prebuilt';
 
 const createImage = async (req, res, config = {}) => {
-  const settings = Object.assign({}, config, req.query);
+  const settings = { ...config, ...req.query };
 
   const {
     imageSrc = 'default.jpg',
@@ -17,35 +17,11 @@ const createImage = async (req, res, config = {}) => {
     multiText = []
   } = settings;
 
-  const { imageName = '' } = req.params;
-
-  const noLocalImageOrText = imageSrc === 'default.jpg' && text === '';
-  const noRemoteImageOrText = !imageName && text === null;
-
-  // Return 400 if we have no images or text
-  if (noLocalImageOrText || noRemoteImageOrText) {
-    res.status(400).send('Not allowed');
-  }
-
-  // Return 400 if images are too large or text is too long
-  if (width > 2000 || height > 2000 || text.length > 100) {
-    res.status(400).send('Not allowed');
-  }
-
   const fontPath = `${process.cwd()}/src/fonts/IndieFlower-Regular.ttf`;
   Canvas.registerFont(fontPath, { family: 'Indie Flower' });
 
-  let backgroundImage;
-  const localImagePath = `${process.cwd()}/src/images/${imageSrc}`;
-
-  if (imageName) {
-    // Ideally we should check if the image exists in the bucket too
-    const s3bucket = process.env.S3_BUCKET;
-    backgroundImage = s3bucket ? `${s3bucket}/${imageName}` : localImagePath;
-  } else {
-    backgroundImage = localImagePath;
-  }
-
+  const imagePath = process.env.S3_BUCKET ? process.env.S3_BUCKET : `${process.cwd()}/src/images`;
+  const backgroundImage = `${imagePath}/${imageSrc}`;
   const canvas = Canvas.createCanvas(width, height);
   const ctx = canvas.getContext('2d');
 
